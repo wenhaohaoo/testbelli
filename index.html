@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vow Me Wow We — Ben & Linh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C8373A;
+  --red-light:#F2E8E8;
+  --gold:#C4962A;
+  --gold-light:#FDF3DC;
+  --cream:#FBF7F0;
+  --cream2:#F3EDE3;
+  --sage:#7A9E7E;
+  --sage-light:#EBF2EC;
+  --text:#2C2018;
+  --text-mid:#6B5744;
+  --text-soft:#A0907E;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 40px;
+  background:rgba(251,247,240,0.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(196,150,42,0.15);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 2px 24px rgba(44,32,24,.06)}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:22px;color:var(--red);letter-spacing:0.5px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-rsvp{
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  background:var(--red);color:var(--white);
+  padding:9px 22px;border-radius:40px;text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.nav-rsvp:hover{background:#A82C2E;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text-mid);transition:.3s}
+
+/* ── HERO ── */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px 24px 60px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    url("https://static.wixstatic.com/media/dd5f0f_400a20e22ace4cdd8a095bb7b109fea6~mv2.jpeg/v1/crop/x_0,y_1758,w_3429,h_2745/fill/w_2744,h_1334,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Be%2BLi_232_JPG.jpeg");
+  background-size:cover;
+  background-position:center 35%;
+  background-repeat:no-repeat;
+  transform:scale(1.02);
+}
+.hero-bg::after{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg, rgba(245,237,223,.88) 0%, rgba(245,237,223,.18) 18%, rgba(245,237,223,.18) 82%, rgba(245,237,223,.88) 100%),
+    radial-gradient(900px 520px at 50% 30%, rgba(255,255,255,.36), rgba(255,255,255,0) 62%),
+    linear-gradient(180deg, rgba(245,237,223,.95) 0%, rgba(245,237,223,.46) 30%, rgba(240,224,213,.36) 56%, rgba(232,237,228,.96) 100%);
+}
+/* Decorative lotus/floral SVG motif top */
+.hero-motif-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:800px;opacity:.12;z-index:1;pointer-events:none}
+.hero-motif-bl{position:absolute;bottom:0;left:-60px;width:320px;opacity:.1;z-index:1;pointer-events:none}
+.hero-motif-br{position:absolute;bottom:0;right:-60px;width:320px;opacity:.1;z-index:1;pointer-events:none;transform:scaleX(-1)}
+
+.hero-content{position:relative;z-index:2}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(196,150,42,.35);
+  padding:6px 20px;border-radius:40px;margin-bottom:32px;
+  background:rgba(255,255,255,.5);
+}
+.hero-names{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(64px,12vw,120px);
+  font-weight:400;
+  line-height:.95;
+  color:var(--text);
+  text-shadow:0 18px 50px rgba(44,32,24,.16);
+  margin-bottom:12px;
+}
+.hero-names .amp{
+  display:block;
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(48px,8vw,80px);
+  color:var(--red);
+  line-height:1.1;
+  margin:4px 0;
+}
+.hero-subtitle{
+  font-size:14px;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(44,32,24,.68);
+  text-shadow:0 14px 40px rgba(44,32,24,.14);
+  margin-bottom:40px;
+}
+.hero-date-badge{
+  display:inline-flex;align-items:center;gap:16px;
+  background:rgba(255,255,255,.84);
+  border:1px solid rgba(196,150,42,.42);
+  border-radius:60px;padding:14px 32px;
+  font-size:15px;color:var(--text-mid);
+  box-shadow:0 14px 44px rgba(44,32,24,.08);
+  margin-bottom:40px;
+}
+.hero-date-badge strong{font-family:'Playfair Display',serif;font-size:20px;color:var(--red);font-weight:400}
+.hero-cta{
+  display:inline-block;
+  background:var(--red);color:var(--white);
+  padding:16px 40px;border-radius:60px;
+  font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  text-decoration:none;
+  transition:background .2s,transform .15s;
+  margin-right:12px;
+}
+.hero-cta:hover{background:#A82C2E;transform:translateY(-2px)}
+.hero-cta-ghost{
+  display:inline-block;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(196,150,42,.55);
+  color:var(--text);
+  padding:15px 32px;border-radius:60px;
+  font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  text-decoration:none;
+  box-shadow:0 14px 44px rgba(44,32,24,.08);
+  transition:background .2s,border-color .2s,transform .15s;
+}
+.hero-cta-ghost:hover{background:rgba(255,255,255,.94);border-color:rgba(196,150,42,.75);transform:translateY(-2px)}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text-soft);
+  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;
+}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollAnim 1.8s ease-in-out infinite}
+@keyframes scrollAnim{0%,100%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ── PHOTO STRIP ── */
+.photo-strip{
+  display:flex;overflow-x:auto;gap:12px;padding:12px 40px;
+  scrollbar-width:none;
+  background:var(--cream2);
+  border-top:1px solid rgba(196,150,42,.12);
+  border-bottom:1px solid rgba(196,150,42,.12);
+}
+.photo-strip::-webkit-scrollbar{display:none}
+.photo-strip-item{
+  flex:0 0 auto;width:200px;height:280px;border-radius:12px;
+  background:var(--cream);overflow:hidden;position:relative;
+}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.photo-strip-item:hover img{transform:scale(1.04)}
+.photo-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--cream2);color:var(--text-soft);font-size:12px;letter-spacing:1px;text-align:center;padding:16px;
+  border:1px dashed rgba(160,144,126,.3);border-radius:12px;
+}
+.photo-placeholder svg{margin-bottom:8px;opacity:.4}
+.upload-hint{font-size:10px;color:var(--text-soft);margin-top:4px;opacity:.6}
+
+/* ── SECTIONS ── */
+section{padding:80px 24px}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
+.section-title{
+  font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);
+  font-weight:400;line-height:1.15;color:var(--text);margin-bottom:16px;
+}
+.section-title em{font-style:italic;color:var(--red)}
+.section-subtitle{font-size:15px;color:var(--text-soft);line-height:1.8;max-width:560px}
+.divider-motif{
+  display:flex;align-items:center;gap:16px;margin:32px 0;
+  color:var(--gold);font-size:18px;opacity:.5;
+}
+.divider-motif::before,.divider-motif::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.3}
+
+/* ── COUPLE ── */
+#couple{background:var(--white)}
+.couple-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:start;margin-top:48px}
+.person-card{text-align:center}
+.person-photo{
+  width:160px;height:200px;border-radius:16px;
+  background:var(--cream2);margin:0 auto 20px;
+  overflow:hidden;position:relative;
+  border:3px solid var(--cream2);
+  transition:border-color .3s;
+}
+.person-photo:hover{border-color:var(--gold)}
+.person-photo img{width:100%;height:100%;object-fit:cover}
+.person-role{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.person-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;color:var(--text);margin-bottom:12px}
+.person-parents{font-size:13px;color:var(--text-soft);line-height:1.9}
+.couple-center{display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:60px}
+.amp-large{font-family:'Dancing Script',cursive;font-size:80px;color:var(--red);line-height:1;opacity:.8}
+.belli-tag{
+  margin-top:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-soft);
+}
+
+/* ── DETAILS ── */
+#details{background:var(--cream)}
+.details-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px}
+.detail-card{
+  background:var(--white);border-radius:20px;padding:32px 28px;
+  border:1px solid rgba(196,150,42,.12);
+  transition:transform .25s, box-shadow .25s;
+}
+.detail-card-wide{grid-column:span 2}
+.detail-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(44,32,24,.08)}
+.detail-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--red-light);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;font-size:22px;
+}
+.detail-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.detail-value{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--text);margin-bottom:8px}
+.detail-sub{font-size:13px;color:var(--text-soft);line-height:1.7}
+.detail-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--red);text-decoration:none;margin-top:14px;
+  transition:gap .2s;
+}
+.detail-link:hover{gap:10px}
+.detail-link::after{content:'→'}
+
+/* Schedule */
+.schedule-row{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid rgba(196,150,42,.12)}
+.schedule-row:last-child{border-bottom:none}
+.schedule-time{font-family:'Playfair Display',serif;font-size:18px;color:var(--red);min-width:72px}
+.schedule-desc{font-size:14px;color:var(--text-mid);padding-top:2px}
+
+/* ── STORY ── */
+#story{background:var(--white);position:relative;overflow:hidden}
+.story-bg-motif{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:400px;opacity:.04;pointer-events:none}
+.story-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:48px}
+.story-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.story-photo{border-radius:16px;overflow:hidden;background:var(--cream2)}
+.story-photo.tall{grid-row:span 2}
+.story-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.story-photo-p{height:200px}
+.story-photo-p.tall{height:412px}
+.story-text .quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(20px,3vw,28px);font-style:italic;
+  color:var(--text);line-height:1.5;margin-bottom:24px;
+  padding-left:24px;border-left:3px solid var(--red);
+}
+.story-text p{font-size:15px;color:var(--text-soft);line-height:1.9;margin-bottom:16px}
+.story-sig{font-family:'Dancing Script',cursive;font-size:28px;color:var(--red);margin-top:24px}
+
+/* ── PHOTO GALLERY ── */
+#gallery{background:var(--cream2)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:auto;
+  gap:12px;margin-top:40px;
+}
+.gallery-item{
+  border-radius:12px;overflow:hidden;background:var(--cream);
+  position:relative;cursor:pointer;
+}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item.wide{grid-column:span 2}
+.gallery-item.tall{grid-row:span 2}
+.gallery-ph{height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text-soft);font-size:12px;letter-spacing:1px;text-align:center;padding:16px;border:1.5px dashed rgba(160,144,126,.25)}
+.gallery-upload-btn{
+  display:inline-block;margin-top:32px;
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  border:1px solid rgba(196,150,42,.4);color:var(--text-mid);
+  padding:12px 28px;border-radius:40px;cursor:pointer;
+  transition:background .2s,border-color .2s;text-decoration:none;
+}
+.gallery-upload-btn:hover{background:var(--gold-light);border-color:var(--gold)}
+
+/* ── HANOI ── */
+#hanoi{background:var(--white)}
+.hanoi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.hanoi-card{
+  border-radius:20px;overflow:hidden;
+  border:1px solid rgba(196,150,42,.12);
+  transition:transform .25s,box-shadow .25s;
+  background:var(--cream);
+}
+.hanoi-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(44,32,24,.09)}
+.hanoi-card-img{height:200px;background:var(--cream2);overflow:hidden;position:relative}
+.hanoi-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.hanoi-card:hover .hanoi-card-img img{transform:scale(1.06)}
+.hanoi-ph{height:200px;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg,var(--sage-light),var(--gold-light))}
+.hanoi-card-body{padding:24px}
+.hanoi-card-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:8px}
+.hanoi-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--text);margin-bottom:8px}
+.hanoi-card-desc{font-size:13px;color:var(--text-soft);line-height:1.7;margin-bottom:16px}
+.hanoi-card-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--red);text-decoration:none;
+  transition:gap .2s;
+}
+.hanoi-card-link:hover{gap:10px}
+.hanoi-card-link::after{content:'→'}
+.hanoi-card-btn{
+  background:none;border:none;padding:0;
+  cursor:pointer;
+}
+.hanoi-card-btn:focus-visible{
+  outline:2px solid rgba(196,150,42,.6);
+  outline-offset:6px;border-radius:10px;
+}
+.hanoi-expander{
+  margin-top:22px;
+  border-radius:20px;
+  border:1px solid rgba(196,150,42,.12);
+  background:var(--cream2);
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .22s,transform .22s;
+}
+.hanoi-expander.open{opacity:1;transform:translateY(0)}
+.hanoi-expander-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:18px 18px 14px 18px;
+  border-bottom:1px solid rgba(196,150,42,.12);
+  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.0));
+}
+.hanoi-expander-tag{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);
+  margin-bottom:6px;
+}
+.hanoi-expander-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:400;color:var(--text);
+}
+.hanoi-expander-actions{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.hanoi-expander-close{
+  width:36px;height:36px;border-radius:12px;
+  border:1px solid rgba(196,150,42,.18);
+  background:rgba(255,255,255,.55);
+  cursor:pointer;
+  color:var(--text-mid);
+}
+.hanoi-expander-close:hover{background:rgba(255,255,255,.75)}
+.hanoi-expander-content{
+  background:var(--white);
+  padding:20px 18px 22px 18px;
+}
+.guide-hero{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:16px;
+  border:1px solid rgba(196,150,42,.12);
+  background:var(--cream);
+  display:block;
+  margin-bottom:16px;
+}
+.guide-lead{
+  font-size:14px;
+  color:var(--text-soft);
+  line-height:1.85;
+  margin-bottom:18px;
+}
+.guide-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.guide-card{
+  border:1px solid rgba(196,150,42,.12);
+  border-radius:16px;
+  background:linear-gradient(180deg,rgba(251,247,240,.9),rgba(251,247,240,.55));
+  padding:16px 16px 14px 16px;
+}
+.guide-card-title{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  color:var(--text);
+  margin-bottom:10px;
+}
+.guide-list{margin:0;padding-left:18px}
+.guide-list li{margin:8px 0;font-size:13px;line-height:1.6;color:var(--text-mid)}
+.guide-list a{color:var(--red);text-decoration:none}
+.guide-list a:hover{text-decoration:underline}
+.guide-note{margin-top:10px;font-size:12px;color:var(--text-soft);line-height:1.7}
+.guide-sep{height:1px;background:rgba(196,150,42,.12);margin:18px 0}
+.getting-around{
+  margin-top:40px;background:var(--cream2);border-radius:16px;padding:24px 28px;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  border:1px solid rgba(196,150,42,.12);
+}
+.getting-around-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-soft);flex-shrink:0}
+.app-chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  font-size:12px;padding:6px 14px;border-radius:20px;
+  background:var(--white);border:1px solid rgba(196,150,42,.25);
+  color:var(--text-mid);font-weight:500;
+}
+
+/* ── RSVP ── */
+#rsvp{
+  background:linear-gradient(160deg,#3D1F14 0%,#5C2B1A 50%,#2E1A2A 100%);
+  position:relative;overflow:hidden;
+}
+.rsvp-bg-text{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Playfair Display',serif;
+  font-size:300px;font-style:italic;
+  color:rgba(255,255,255,.02);
+  white-space:nowrap;pointer-events:none;letter-spacing:-10px;
+}
+.rsvp-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;text-align:center}
+.rsvp-inner .section-tag{color:rgba(196,150,42,.7)}
+.rsvp-inner .section-title{color:var(--white)}
+.rsvp-inner .section-title em{color:var(--gold)}
+.rsvp-inner .section-subtitle{color:rgba(255,255,255,.5);margin:0 auto 48px}
+.rsvp-card{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;padding:48px;text-align:left;
+  backdrop-filter:blur(8px);
+}
+
+/* Form elements */
+.f-row{margin-bottom:22px}
+.f-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-label{
+  display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:9px;
+}
+.f-input{
+  width:100%;font-family:'DM Sans',sans-serif;font-size:15px;
+  color:var(--white);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;padding:13px 16px;outline:none;
+  transition:border-color .2s,background .2s;
+}
+.f-input:focus{border-color:rgba(196,150,42,.6);background:rgba(255,255,255,.12)}
+.f-input::placeholder{color:rgba(255,255,255,.25)}
+select.f-input{cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;
+}
+select.f-input option{background:#3D1F14;color:var(--white)}
+textarea.f-input{resize:vertical;min-height:90px}
+
+/* Toggle buttons */
+.attend-toggle{display:flex;gap:12px;margin-bottom:4px}
+.att-btn{
+  flex:1;padding:14px;font-family:'DM Sans',sans-serif;
+  font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;cursor:pointer;color:rgba(255,255,255,.5);
+  transition:all .2s;
+}
+.att-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25)}
+.att-btn.yes-active{background:rgba(122,158,126,.25);border-color:var(--sage);color:#9FD4A5;font-weight:500}
+.att-btn.no-active{background:rgba(200,55,58,.2);border-color:var(--red);color:#F09898;font-weight:500}
+
+#rsvp-attend-fields{display:none}
+#rsvp-attend-fields.show{display:block}
+#rsvp-decline-note{display:none;text-align:center;padding:12px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:rgba(255,255,255,.4)}
+#rsvp-decline-note.show{display:block}
+
+.checkbox-row{display:flex;align-items:center;gap:12px;padding:8px 0;cursor:pointer}
+.checkbox-row input{width:18px;height:18px;accent-color:var(--gold);cursor:pointer;flex-shrink:0}
+.checkbox-row span{font-size:14px;color:rgba(255,255,255,.65)}
+
+.accomm-note{
+  background:rgba(122,158,126,.12);border:1px solid rgba(122,158,126,.25);
+  border-radius:12px;padding:16px;margin-top:12px;
+  font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;
+}
+.accomm-note a{color:var(--sage);text-decoration:none}
+.accomm-note a:hover{text-decoration:underline}
+
+.f-submit{
+  width:100%;padding:18px;margin-top:32px;
+  font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--white);
+  background:linear-gradient(135deg,var(--red) 0%,#8B2252 100%);
+  border:none;border-radius:14px;cursor:pointer;
+  transition:opacity .2s,transform .15s;
+}
+.f-submit:hover{opacity:.9;transform:translateY(-1px)}
+.f-submit:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.f-error{display:none;font-size:12px;color:#F09898;margin-top:8px;padding:8px 12px;background:rgba(200,55,58,.1);border-radius:8px;border:1px solid rgba(200,55,58,.2)}
+.f-error.show{display:block}
+
+#rsvp-success{display:none;text-align:center;padding:32px 0}
+#rsvp-success.show{display:block}
+.success-flower{font-size:48px;margin-bottom:16px}
+.success-title{font-family:'Playfair Display',serif;font-size:36px;font-style:italic;color:var(--white);margin-bottom:10px}
+.success-sub{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--text);
+  padding:48px 24px;text-align:center;
+}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:32px;color:var(--gold);margin-bottom:16px}
+.footer-date{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:28px}
+.footer-links{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:32px}
+.footer-links a{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ── Lightbox ── */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(0,0,0,.9);align-items:center;justify-content:center;
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;object-fit:contain}
+.lb-close{
+  position:absolute;top:24px;right:32px;font-size:32px;color:rgba(255,255,255,.6);cursor:pointer;
+  background:none;border:none;transition:color .2s;
+}
+.lb-close:hover{color:var(--white)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(251,247,240,.97);padding:20px;border-bottom:1px solid rgba(196,150,42,.15);gap:20px}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .nav-rsvp{display:none}
+  .couple-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .couple-center{display:none}
+  .details-grid{grid-template-columns:1fr}
+  .detail-card-wide{grid-column:auto}
+  .story-layout{grid-template-columns:1fr;gap:40px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item.wide{grid-column:span 2}
+  .gallery-item.tall{grid-row:span 1}
+  .hanoi-grid{grid-template-columns:1fr}
+  .hanoi-expander-head{flex-direction:column;align-items:stretch;gap:12px}
+  .hanoi-expander-actions{justify-content:flex-end}
+  .hanoi-expander-content{padding:16px 14px 18px 14px}
+  .guide-hero{height:200px;border-radius:14px}
+  .guide-grid{grid-template-columns:1fr}
+  .guide-card{padding:14px 14px 12px 14px}
+  .rsvp-card{padding:28px 20px}
+  .f-row-2{grid-template-columns:1fr}
+  .photo-strip{padding:12px 16px}
+}
+@media(max-width:480px){
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item.wide{grid-column:span 2}
+  .couple-grid{grid-template-columns:1fr 1fr}
+  section{padding:60px 20px}
+  .hanoi-expander-head{padding:16px 16px 12px 16px}
+  .hanoi-expander-title{font-size:20px}
+  .guide-hero{height:160px}
+  .schedule-row{flex-direction:column;gap:8px}
+  .schedule-time{min-width:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Vow Me Wow We</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#couple">Couple</a></li>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#hanoi">Hanoi Guide</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
+  </ul>
+  <a href="#rsvp" class="nav-rsvp">RSVP Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Decorative SVG floral top border -->
+  <svg class="hero-motif-top" viewBox="0 0 800 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 40 Q100 10 200 40 Q300 70 400 40 Q500 10 600 40 Q700 70 800 40" stroke="#C4962A" stroke-width="1" fill="none"/>
+    <path d="M0 48 Q100 18 200 48 Q300 78 400 48 Q500 18 600 48 Q700 78 800 48" stroke="#C8373A" stroke-width="0.5" fill="none"/>
+    <circle cx="200" cy="40" r="5" fill="#C4962A" opacity="0.6"/>
+    <circle cx="400" cy="40" r="5" fill="#C8373A" opacity="0.6"/>
+    <circle cx="600" cy="40" r="5" fill="#C4962A" opacity="0.6"/>
+    <circle cx="100" cy="25" r="3" fill="#C4962A" opacity="0.4"/>
+    <circle cx="300" cy="55" r="3" fill="#C8373A" opacity="0.4"/>
+    <circle cx="500" cy="25" r="3" fill="#C4962A" opacity="0.4"/>
+    <circle cx="700" cy="55" r="3" fill="#C8373A" opacity="0.4"/>
+  </svg>
+
+  <!-- Lotus left -->
+  <svg class="hero-motif-bl" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="150" cy="300" rx="80" ry="30" fill="#C4962A"/>
+    <path d="M150 280 Q120 220 100 160 Q130 200 150 240 Q170 200 200 160 Q180 220 150 280Z" fill="#C8373A"/>
+    <path d="M150 240 Q100 180 60 120 Q110 170 150 220 Q190 170 240 120 Q200 180 150 240Z" fill="#C4962A"/>
+    <path d="M150 200 Q80 150 40 80 Q100 140 150 190 Q200 140 260 80 Q220 150 150 200Z" fill="#C8373A" opacity="0.6"/>
+  </svg>
+  <svg class="hero-motif-br" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="150" cy="300" rx="80" ry="30" fill="#C4962A"/>
+    <path d="M150 280 Q120 220 100 160 Q130 200 150 240 Q170 200 200 160 Q180 220 150 280Z" fill="#C8373A"/>
+    <path d="M150 240 Q100 180 60 120 Q110 170 150 220 Q190 170 240 120 Q200 180 150 240Z" fill="#C4962A"/>
+    <path d="M150 200 Q80 150 40 80 Q100 140 150 190 Q200 140 260 80 Q220 150 150 200Z" fill="#C8373A" opacity="0.6"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">You are invited</div>
+    <h1 class="hero-names">
+      Ben
+      <span class="amp">&</span>
+      Linh
+    </h1>
+    <p class="hero-subtitle">Chang Ben Nii &nbsp;·&nbsp; Quach Ha-Linh</p>
+    <div class="hero-date-badge">
+      <strong>19 Dec 2026</strong>
+      <span>·</span>
+      <span>Sheraton Hanoi Hotel</span>
+    </div>
+    <br>
+    <a href="#rsvp" class="hero-cta">RSVP Now</a>
+    <a href="#details" class="hero-cta-ghost">View Details</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip" id="photoStrip">
+  <!-- Replace src with your actual photo URLs — these are placeholders -->
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_400a20e22ace4cdd8a095bb7b109fea6~mv2.jpeg/v1/crop/x_0,y_1758,w_3429,h_2745/fill/w_600,h_800,al_c,q_85,enc_avif,quality_auto/Be%2BLi_232_JPG.jpeg" alt="Ben and Linh" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_125059aaab5a433db0e556f188e03aee~mv2.jpg/v1/crop/x_0,y_1522,w_4672,h_2475/fill/w_600,h_800,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Photo%2011-5-2025%2C%2021%2007%2058.jpg" alt="Couple photo" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_217cfbabf52e442a9b3917c87d404514~mv2.jpg/v1/fill/w_600,h_900,al_c,q_80,enc_avif/dd5f0f_217cfbabf52e442a9b3917c87d404514~mv2.jpg" alt="BeLi" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_f3ed1d21107a4f43b8bc33c7bd8ab1ec~mv2.jpg/v1/fill/w_600,h_900,al_c,q_80,enc_avif/dd5f0f_f3ed1d21107a4f43b8bc33c7bd8ab1ec~mv2.jpg" alt="Boolean" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_0c67deead9c3471296c967c9674eb1a3~mv2.jpg/v1/fit/w_600,h_900,q_90,enc_avif,quality_auto/dd5f0f_0c67deead9c3471296c967c9674eb1a3~mv2.jpg" alt="Hanoi" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_9c2e775d4d834d218def3592668b664c~mv2.jpg/v1/fit/w_600,h_900,q_90,enc_avif,quality_auto/dd5f0f_9c2e775d4d834d218def3592668b664c~mv2.jpg" alt="Photo" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_c20f7d4c3a5342a7acb3b4561202e238~mv2.jpg/v1/fit/w_600,h_900,q_90,enc_avif,quality_auto/dd5f0f_c20f7d4c3a5342a7acb3b4561202e238~mv2.jpg" alt="Photo" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://static.wixstatic.com/media/dd5f0f_7c45cd01e8a74555b56f081f4bf596a5~mv2.jpg/v1/fit/w_600,h_900,q_90,enc_avif,quality_auto/dd5f0f_7c45cd01e8a74555b56f081f4bf596a5~mv2.jpg" alt="Photo" loading="lazy">
+  </div>
+  <!-- Add more photo-strip-items with your own photos -->
+</div>
+
+<!-- COUPLE -->
+<section id="couple">
+  <div class="section-inner">
+    <span class="section-tag">The Couple</span>
+    <h2 class="section-title">The <em>families</em> behind our love</h2>
+    <p class="section-subtitle">Two families, two cultures — one beautiful beginning. We are deeply grateful for the love and support of those who raised us.</p>
+
+    <div class="couple-grid">
+      <div class="person-card">
+        <div class="person-photo">
+          <img src="https://static.wixstatic.com/media/dd5f0f_f3ed1d21107a4f43b8bc33c7bd8ab1ec~mv2.jpg/v1/fill/w_400,h_500,al_c,q_80,enc_avif/dd5f0f_f3ed1d21107a4f43b8bc33c7bd8ab1ec~mv2.jpg" alt="Chang Ben Nii" loading="lazy">
+        </div>
+        <div class="person-role">Groom</div>
+        <div class="person-name">Chang Ben Nii</div>
+        <div class="person-parents">
+          Mr Chang Chee Sung<br>
+          Ms Chang Beng Key
+        </div>
+      </div>
+
+      <div class="couple-center">
+        <div class="amp-large">&</div>
+        <div class="belli-tag">BelLi 🐸🐹</div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-photo">
+          <img src="https://static.wixstatic.com/media/dd5f0f_217cfbabf52e442a9b3917c87d404514~mv2.jpg/v1/fill/w_400,h_500,al_c,q_80,enc_avif/dd5f0f_217cfbabf52e442a9b3917c87d404514~mv2.jpg" alt="Quach Ha-Linh" loading="lazy">
+        </div>
+        <div class="person-role">Bride</div>
+        <div class="person-name">Quach Ha-Linh</div>
+        <div class="person-parents">
+          Mr Quach Tuan Anh<br>
+          Ms Nguyen Thu Ha
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section id="details">
+  <div class="section-inner">
+    <span class="section-tag">The Day</span>
+    <h2 class="section-title">When the <em>magic</em> happens</h2>
+    <p class="section-subtitle">We'd love for you to join us on our special day. Here's everything you need to know.</p>
+
+    <div class="divider-motif"><span>✦</span></div>
+
+    <div class="details-grid">
+      <!-- Date & Venue -->
+      <div class="detail-card">
+        <div class="detail-icon">📍</div>
+        <div class="detail-label">Date & Venue</div>
+        <div class="detail-value">19 December 2026</div>
+        <div class="detail-sub">Sheraton Hanoi Hotel<br>Hanoi, Vietnam</div>
+        <a href="https://maps.app.goo.gl/eExB17Z7eizeK7cB9" target="_blank" class="detail-link">Get Directions</a>
+      </div>
+
+      <!-- Schedule -->
+      <div class="detail-card">
+        <div class="detail-icon">🕐</div>
+        <div class="detail-label">Schedule</div>
+        <div class="schedule-row">
+          <div class="schedule-time">5:00 pm</div>
+          <div class="schedule-desc">Reception begins</div>
+        </div>
+        <div class="schedule-row">
+          <div class="schedule-time">5:30 pm</div>
+          <div class="schedule-desc">Main celebration party!</div>
+        </div>
+      </div>
+
+      <!-- Dress Code -->
+      <div class="detail-card">
+        <div class="detail-icon">👗</div>
+        <div class="detail-label">Dress Code</div>
+        <div class="detail-value">Smart Casual</div>
+        <div class="detail-sub">Come dressed in your finest smart casual attire — and most importantly, bring your brightest smile! 😊</div>
+      </div>
+
+      <!-- Accommodation -->
+      <div class="detail-card detail-card-wide">
+        <div class="detail-icon">🏨</div>
+        <div class="detail-label">Complimentary Accommodation</div>
+        <div class="detail-value">Hanoi Club Hotel</div>
+        <div class="detail-sub">We're delighted to offer <strong>2 nights of free accommodation</strong> for you and your family, from 18–20 December 2026. Please indicate your preference when filling in the RSVP form below.</div>
+        <a href="https://www.thehanoiclub.com/" target="_blank" class="detail-link">View Hotel</a>
+      </div>
+
+      <!-- Our Nicknames -->
+      <div class="detail-card">
+        <div class="detail-icon">🐸</div>
+        <div class="detail-label">Fun fact</div>
+        <div class="detail-value">Kiwi frog & Lotus hamster</div>
+        <div class="detail-sub">BelLi — a blend of Ben & Linh, just like our cultures.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="section-inner">
+    <span class="section-tag">Our Story</span>
+    <h2 class="section-title">Loving <em>& Being</em></h2>
+
+    <div class="story-layout">
+      <div class="story-photos">
+        <div class="story-photo tall story-photo-p" style="height:100%">
+          <img src="https://static.wixstatic.com/media/dd5f0f_400a20e22ace4cdd8a095bb7b109fea6~mv2.jpeg/v1/crop/x_0,y_1758,w_3429,h_2745/fill/w_600,h_800,al_c,q_85,enc_avif,quality_auto/Be%2BLi_232_JPG.jpeg" alt="Ben and Linh" style="height:420px" loading="lazy">
+        </div>
+        <div class="story-photo story-photo-p" style="height:200px">
+          <img src="https://static.wixstatic.com/media/dd5f0f_125059aaab5a433db0e556f188e03aee~mv2.jpg/v1/crop/x_0,y_1522,w_4672,h_2475/fill/w_600,h_400,al_c,q_80,enc_avif/Photo%2011-5-2025%2C%2021%2007%2058.jpg" alt="Couple" style="height:200px" loading="lazy">
+        </div>
+        <div class="story-photo story-photo-p" style="height:200px">
+          <img src="https://static.wixstatic.com/media/dd5f0f_201580c550304645b03af54e1ded877b~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,enc_avif/dd5f0f_201580c550304645b03af54e1ded877b~mv2.jpg" alt="Lilly" style="height:200px" loading="lazy">
+        </div>
+      </div>
+
+      <div class="story-text">
+        <div class="quote">"From the bustling streets of Singapore to the vibrant city of Sydney, our love story embodies a beautiful blend of cultures."</div>
+        <p>We celebrate our Vietnamese and Penang roots through our wedding, and we hope you can find love and traditions in it!</p>
+        <p>Our story is one of two worlds becoming one — of pho and char koay teow, of lotus ponds and kiwi birds, of two souls who found home in each other.</p>
+        <p>We are so grateful you are part of our journey. Your presence at our wedding means the world to us.</p>
+        <div class="story-sig">~ BelLi 🐸🐹</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <span class="section-tag">Gallery</span>
+    <h2 class="section-title">Moments we <em>treasure</em></h2>
+    <p class="section-subtitle" style="margin-bottom:8px">A glimpse into our journey together. Add your own photos after uploading them.</p>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item wide" style="height:280px">
+        <img src="https://static.wixstatic.com/media/dd5f0f_400a20e22ace4cdd8a095bb7b109fea6~mv2.jpeg/v1/crop/x_0,y_1758,w_3429,h_2745/fill/w_900,h_560,al_c,q_85,enc_avif/Be%2BLi_232_JPG.jpeg" alt="Ben & Linh" loading="lazy">
+      </div>
+      <div class="gallery-item" style="height:280px">
+        <img src="https://static.wixstatic.com/media/dd5f0f_217cfbabf52e442a9b3917c87d404514~mv2.jpg/v1/fill/w_500,h_560,al_c,q_80,enc_avif/dd5f0f_217cfbabf52e442a9b3917c87d404514~mv2.jpg" alt="BeLi" loading="lazy">
+      </div>
+      <div class="gallery-item" style="height:280px">
+        <img src="https://static.wixstatic.com/media/dd5f0f_f3ed1d21107a4f43b8bc33c7bd8ab1ec~mv2.jpg/v1/fill/w_500,h_560,al_c,q_80,enc_avif/dd5f0f_f3ed1d21107a4f43b8bc33c7bd8ab1ec~mv2.jpg" alt="Boolean" loading="lazy">
+      </div>
+      <div class="gallery-item" style="height:240px">
+        <img src="https://static.wixstatic.com/media/dd5f0f_0c67deead9c3471296c967c9674eb1a3~mv2.jpg/v1/fit/w_500,h_480,q_90,enc_avif/dd5f0f_0c67deead9c3471296c967c9674eb1a3~mv2.jpg" alt="Hanoi" loading="lazy">
+      </div>
+      <div class="gallery-item" style="height:240px">
+        <img src="https://static.wixstatic.com/media/dd5f0f_9c2e775d4d834d218def3592668b664c~mv2.jpg/v1/fit/w_500,h_480,q_90,enc_avif/dd5f0f_9c2e775d4d834d218def3592668b664c~mv2.jpg" alt="Photo" loading="lazy">
+      </div>
+      <div class="gallery-item" style="height:240px">
+        <img src="https://static.wixstatic.com/media/dd5f0f_c20f7d4c3a5342a7acb3b4561202e238~mv2.jpg/v1/fit/w_500,h_480,q_90,enc_avif/dd5f0f_c20f7d4c3a5342a7acb3b4561202e238~mv2.jpg" alt="Photo" loading="lazy">
+      </div>
+      <div class="gallery-item" style="height:240px">
+        <img src="https://static.wixstatic.com/media/dd5f0f_7c45cd01e8a74555b56f081f4bf596a5~mv2.jpg/v1/fit/w_500,h_480,q_90,enc_avif/dd5f0f_7c45cd01e8a74555b56f081f4bf596a5~mv2.jpg" alt="Photo" loading="lazy">
+      </div>
+      <!-- Photo upload placeholder -->
+      <div class="gallery-item" style="height:240px">
+        <div class="gallery-ph">
+          <div style="font-size:28px;margin-bottom:8px">📷</div>
+          <div>Add your photo here</div>
+          <div style="font-size:10px;margin-top:4px;opacity:.6">Replace src with your image URL</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:24px">
+      <span style="font-size:12px;color:var(--text-soft);letter-spacing:1px">Replace the image URLs in the HTML with your own photos to populate the gallery</span>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME TO HANOI -->
+<section id="hanoi">
+  <div class="section-inner">
+    <span class="section-tag">Travel Guide</span>
+    <h2 class="section-title">Welcome to <em>Hanoi</em></h2>
+    <p class="section-subtitle">Hanoi is the capital of Vietnam and the hometown of Linh and her family. We've put together some guides to help you make the most of your visit!</p>
+
+    <div class="hanoi-grid">
+      <div class="hanoi-card">
+        <div class="hanoi-card-img">
+          <img src="https://static.wixstatic.com/media/dd5f0f_6a17f602707e44cb876e5f1cdf69037a~mv2.jpg/v1/fit/w_600,h_400,q_90,enc_avif/dd5f0f_6a17f602707e44cb876e5f1cdf69037a~mv2.jpg" alt="About Hanoi" loading="lazy">
+        </div>
+        <div class="hanoi-card-body">
+          <div class="hanoi-card-tag">City Guide</div>
+          <div class="hanoi-card-title">About Hanoi</div>
+          <div class="hanoi-card-desc">Explore the capital city of Vietnam — from the Old Quarter to Hoan Kiem Lake. A full travel guide awaits.</div>
+          <a href="https://vietnam.travel/places-to-go/northern-vietnam/ha-noi" target="_blank" class="hanoi-card-link">Explore Guide</a>
+        </div>
+      </div>
+
+      <div class="hanoi-card">
+        <div class="hanoi-card-img">
+          <img src="https://static.wixstatic.com/media/dd5f0f_a1512c8f47d243ef8f879511f219f1f2~mv2.jpg/v1/fit/w_600,h_400,q_90,enc_avif/dd5f0f_a1512c8f47d243ef8f879511f219f1f2~mv2.jpg" alt="Food in Hanoi" loading="lazy">
+        </div>
+        <div class="hanoi-card-body">
+          <div class="hanoi-card-tag">Food & Drink 🥣</div>
+          <div class="hanoi-card-title">What to Eat</div>
+          <div class="hanoi-card-desc">Hanoi has a huge range of delicious things to eat — don't just stick to pho! Linh-approved spots with some input from Ben.</div>
+          <button type="button" class="hanoi-card-link hanoi-card-btn" data-hanoi-url="https://sylquachsc.wixsite.com/vow-me-wow-we/what-to-eat" data-hanoi-title="What to Eat" data-hanoi-tag="Food & Drink 🥣" data-hanoi-template="tpl-what-to-eat" aria-expanded="false" aria-controls="hanoiExpander">Open Guide</button>
+        </div>
+      </div>
+
+      <div class="hanoi-card">
+        <div class="hanoi-card-img">
+          <img src="https://static.wixstatic.com/media/dd5f0f_c5d4c32b3b4a47afa7e195c4d84df41e~mv2.jpg/v1/crop/x_1470,y_0,w_3202,h_7008/fill/w_600,h_400,al_c,q_85,enc_avif/dd5f0f_c5d4c32b3b4a47afa7e195c4d84df41e~mv2.jpg" alt="Places to see" loading="lazy">
+        </div>
+        <div class="hanoi-card-body">
+          <div class="hanoi-card-tag">Sightseeing 🛵</div>
+          <div class="hanoi-card-title">Places to See</div>
+          <div class="hanoi-card-desc">A shortlist of places you can go, things to do, and sights to see while you're in Hanoi.</div>
+          <button type="button" class="hanoi-card-link hanoi-card-btn" data-hanoi-url="https://sylquachsc.wixsite.com/vow-me-wow-we/where-to-go" data-hanoi-title="Places to See" data-hanoi-tag="Sightseeing 🛵" data-hanoi-template="tpl-where-to-go" aria-expanded="false" aria-controls="hanoiExpander">Open Guide</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hanoi-expander" id="hanoiExpander" hidden>
+      <div class="hanoi-expander-head">
+        <div>
+          <div class="hanoi-expander-tag" id="hanoiExpanderTag">Guide</div>
+          <div class="hanoi-expander-title" id="hanoiExpanderTitle">Guide</div>
+        </div>
+        <div class="hanoi-expander-actions">
+          <button type="button" class="hanoi-expander-close" id="hanoiExpanderClose" aria-label="Close guide">✕</button>
+        </div>
+      </div>
+      <div class="hanoi-expander-content" id="hanoiExpanderContent"></div>
+    </div>
+
+    <template id="tpl-what-to-eat">
+      <img class="guide-hero" src="https://static.wixstatic.com/media/dd5f0f_d6d000db189c47a78487ff53a2ccd98d~mv2.jpg/v1/crop/x_0,y_2032,w_4672,h_3504/fill/w_1800,h_1000,al_c,q_85,enc_avif/dd5f0f_d6d000db189c47a78487ff53a2ccd98d~mv2.jpg" alt="Hanoi food" loading="lazy">
+      <div class="guide-lead">Some suggestions from the head consultant in Hanoi. There’s plenty of good food around. Tap a place to open it in Google Maps.</div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-card-title">Pho bo (beef noodles) 👌</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/Tk2Wq8J6wFGTz2pk7?g_st=ic" target="_blank" rel="noopener">Phở bò Bát Đàn</a></li>
+            <li><a href="https://maps.app.goo.gl/y4ThHX7Pyqm5Hb3g6?g_st=ic" target="_blank" rel="noopener">Phở bò Tựu</a></li>
+            <li><a href="https://maps.app.goo.gl/qZtvH7mAK8kAnZHB7" target="_blank" rel="noopener">Phở Cuốn Chinh Thắng</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Bun cha Hanoi (grilled pork noodles)</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/ZfVTtEG1LRpPkDDz9?g_st=ic" target="_blank" rel="noopener">Bún chả Sinh Từ</a></li>
+            <li><a href="https://maps.app.goo.gl/27e79mvNfZXWJ7sJ6?g_st=ic" target="_blank" rel="noopener">Bún chả cửa đông</a></li>
+            <li><a href="https://maps.app.goo.gl/LL7mqMHZjuY32Fd3A" target="_blank" rel="noopener">Bún chả Hàng Quạt</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Pho ga (chicken noodles) 👌</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/8eCFD2aScFNFcaah6?g_st=ic" target="_blank" rel="noopener">Phở gà Nguyệt</a> (dry is the best)</li>
+            <li><a href="https://maps.app.goo.gl/bw9j7gMa68kiruUv7?g_st=ic" target="_blank" rel="noopener">Pho Ga 26</a></li>
+            <li><a href="https://maps.app.goo.gl/TruVSPeSr616pps78?g_st=ic" target="_blank" rel="noopener">Phở gà Tình</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Bit tet (hot plate beef steak)</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/E5pbo63auhayqxXz6?g_st=ic" target="_blank" rel="noopener">Vietnamese style charcuterie</a></li>
+            <li><a href="https://maps.app.goo.gl/VBnYM9DBSDKzjaAA9" target="_blank" rel="noopener">Số 6 Hoè Nhai - Bít tết Hà Cúc</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Cha ca (grilled fish cake) 👌</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/Bb2PaZ1fv54PTWBQ6?g_st=ic" target="_blank" rel="noopener">Chả cá Thăng Long</a> (6b Đường Thành)</li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Traditional northern family meal</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/otzPnGfrwu8FEwyR6?g_st=ic" target="_blank" rel="noopener">Sente: The Flavour of Lotus</a></li>
+            <li><a href="https://maps.app.goo.gl/bEiSwvkgqbQ51yKj8?g_st=ic" target="_blank" rel="noopener">Nhà hàng Tầm Vị</a></li>
+            <li><a href="https://maps.app.goo.gl/wL4FbqeWKF1pHSf96?g_st=ic" target="_blank" rel="noopener">Hà Thành mansion</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">More bowls of delicious 🍜</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/VGBDsMDthUnWnxvHA?g_st=ic" target="_blank" rel="noopener">Bún đậu Hàng Khay</a> (fried tofu with shrimp sauce)</li>
+            <li><a href="https://maps.app.goo.gl/uHWWekKZnP5XdjK28?g_st=ic" target="_blank" rel="noopener">Sticky rice</a></li>
+            <li><a href="https://maps.app.goo.gl/YcX2RmUYYjnDgE4R6?g_st=ic" target="_blank" rel="noopener">Sticky rice (breakie)</a></li>
+            <li><a href="https://maps.app.goo.gl/mST5mzVSfPh127Jv5?g_st=ic" target="_blank" rel="noopener">Bún thang</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Cool cafes</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/shcaYbmH96jq7rrA9?g_st=ic" target="_blank" rel="noopener">Reng Reng</a> (no wifi and only silence)</li>
+            <li><a href="https://maps.app.goo.gl/SQZe7rqbXm2WTcpf9" target="_blank" rel="noopener">Blackbird Coffee</a></li>
+            <li><a href="https://maps.app.goo.gl/rzgQMbnxJGtfAj3x8" target="_blank" rel="noopener">Tranquil Books & Coffee</a></li>
+            <li><a href="https://maps.app.goo.gl/zBXqsi9Bca5piBim7" target="_blank" rel="noopener">Tranquil Books & Coffee (Train Street)</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Bigger, fancier set meals</div>
+          <ul class="guide-list">
+            <li>Bánh tráng Phú Cường (pork roll + fish hot pot): <a href="https://maps.app.goo.gl/GwyTnoJzWfXxPrGe7?g_st=ic" target="_blank" rel="noopener">Location 1</a>, <a href="https://maps.app.goo.gl/wuoKZc1h8drpW6uW9?g_st=ic" target="_blank" rel="noopener">Location 2</a></li>
+            <li><a href="https://maps.app.goo.gl/9L8MrdV6tGP44c939" target="_blank" rel="noopener">Pizza4P</a> (many locations)</li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Traditional Vietnamese coffee</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/hwramKmpJdB8ySGK8?g_st=ic" target="_blank" rel="noopener">Cà phê Nghĩa</a> (people will smoke inside)</li>
+            <li><a href="https://maps.app.goo.gl/qL3caCK83aoRd4Jd6?g_st=ic" target="_blank" rel="noopener">Cà phê Mai</a> (can buy beans)</li>
+            <li><a href="https://maps.app.goo.gl/QNKK3TTewULPiJ2e6?g_st=ic" target="_blank" rel="noopener">Cà phê Giảng</a> (egg coffee)</li>
+            <li><a href="https://maps.app.goo.gl/mrhf4r2gxJiUjuBU8?g_st=ic" target="_blank" rel="noopener">Cà phê Đinh</a> (rock music)</li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Banh cuon (silky rice rolls)</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/nxJ6wDu6XpWoNAJL8?g_st=ic" target="_blank" rel="noopener">Bánh cuốn Bà Xuân</a></li>
+            <li><a href="https://maps.app.goo.gl/hDGXYKDEKgnPFoRV8" target="_blank" rel="noopener">Bánh cuốn Ông Tới</a></li>
+            <li><a href="https://maps.app.goo.gl/4LDkGtMRvuQ9Bgsv5?g_st=ic" target="_blank" rel="noopener">Bánh cuốn bà Hoành</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="guide-sep"></div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-card-title">Desserts</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/XHk8ZXwzbjdmZJTz6?g_st=ic" target="_blank" rel="noopener">Tràng Tiền Ice Cream</a> (rice cake, green bean, coconut milk)</li>
+            <li><a href="https://maps.app.goo.gl/g4x2rouYv1V8VAeJ7?g_st=ic" target="_blank" rel="noopener">Xôi chè Bà Thìn</a> (mung bean and lotus sticky rice)</li>
+            <li><a href="https://maps.app.goo.gl/diPSk6Vic5pDqrKZ6?g_st=ic" target="_blank" rel="noopener">Chè 4 Mùa Hàng Cân</a></li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Cocktail bars</div>
+          <ul class="guide-list">
+            <li><a href="https://maps.app.goo.gl/xsm2zbnsRx7mZ8CVA?g_st=ic" target="_blank" rel="noopener">Nê boongke</a> (phở cocktail)</li>
+            <li><a href="https://maps.app.goo.gl/Jkbm8kf5F5SASYZA6?g_st=ic" target="_blank" rel="noopener">The Halfington</a></li>
+            <li><a href="https://maps.app.goo.gl/38SUftuPLQw11wng9?g_st=ic" target="_blank" rel="noopener">Zodiac</a></li>
+            <li><a href="https://maps.app.goo.gl/kyBDHg5khrPBPidR9?g_st=ic" target="_blank" rel="noopener">Polite & Co</a></li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-where-to-go">
+      <img class="guide-hero" src="https://static.wixstatic.com/media/dd5f0f_6a17f602707e44cb876e5f1cdf69037a~mv2.jpg/v1/fill/w_1800,h_1000,al_c,q_85,enc_avif/dd5f0f_6a17f602707e44cb876e5f1cdf69037a~mv2.jpg" alt="Hanoi sights" loading="lazy">
+      <div class="guide-lead">Hanoi is a historical and storied city — you’ll see heaps of architecture throughout Hoàn Kiếm and the old quarter. Ben’s favourites include the citadel, the Hanoi Hilton, and especially having iced drinks along the streets around the old quarter.</div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-card-title">Ho Chi Minh Mausoleum</div>
+          <div class="guide-note">Nice square in front, you can walk or run here in the morning. Nearby has Ho Chi Minh museum, One Pillar Pagoda (蓮花臺), Parliament House, war memorial, and it’s about a 10 minute walk to West Lake.</div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Imperial Citadel of Thăng Long</div>
+          <div class="guide-note">Big citadel near the mausoleum. Inside has an active archaeological site and museum, along with the Hanoi flag tower.</div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Hỏa Lò Prison (Hanoi Hilton)</div>
+          <div class="guide-note">An old prison in Hanoi where POWs were housed. Right in the inner city, with very good tour guides and open late at night.</div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Opera House · Sword Lake · Water puppet show</div>
+          <div class="guide-note">Walkable locations. Catch a show at the theatres or visit St Joseph Cathedral. Jazz lovers can check out <a href="https://minhjazzvietnam.com/" target="_blank" rel="noopener">Binh Minh Jazz Club</a>.</div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Temple of Literature (文廟)</div>
+          <div class="guide-note">First university of Vietnam. The pond/garden in front has calligraphy writing services.</div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Old Quarter</div>
+          <div class="guide-note">Wander, snack, shop, and find a spot for iced drinks—especially around the small streets near the lake.</div>
+        </div>
+      </div>
+      <div class="guide-sep"></div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-card-title">Museums</div>
+          <ul class="guide-list">
+            <li>Vietnam Museum of Ethnology</li>
+            <li>National Museum of Fine Arts</li>
+            <li>Military Museum and B52 Museum</li>
+            <li>Vincom Center of Contemporary Art</li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Shops</div>
+          <ul class="guide-list">
+            <li>Women’s clothes in Ba Trieu Street, Pham Ngoc Thach Street, and The New Playground</li>
+            <li>Tired City</li>
+            <li>Liu Lo Arts and Crafts</li>
+          </ul>
+        </div>
+        <div class="guide-card">
+          <div class="guide-card-title">Souvenirs</div>
+          <ul class="guide-list">
+            <li>Marou chocolate</li>
+            <li>Coffee beans</li>
+            <li>Mung bean cake</li>
+            <li>Candied fruits (ô mai)</li>
+            <li>Bát Tràng ceramics</li>
+            <li>West Lake lotus tea</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <div class="getting-around">
+      <div class="getting-around-label">Getting around Hanoi</div>
+      <div class="app-chips">
+        <div class="chip">🟢 Grab</div>
+        <div class="chip">🔵 XanhSM</div>
+        <div class="chip">🟡 GOJEK</div>
+        <div class="chip">🔴 BE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <div class="rsvp-bg-text">RSVP</div>
+  <div class="rsvp-inner">
+    <span class="section-tag">Kindly Reply</span>
+    <h2 class="section-title" style="margin-bottom:12px">Will you <em>join us?</em></h2>
+    <p class="section-subtitle">Please RSVP by <strong style="color:rgba(255,255,255,.7)">1 November 2026</strong> so we can honor your presence.</p>
+
+    <div class="rsvp-card">
+      <form id="rsvpForm" novalidate>
+
+        <div class="f-row f-row-2">
+          <div>
+            <label class="f-label" for="f-name">Your name *</label>
+            <input class="f-input" type="text" id="f-name" name="fullName" placeholder="Full name" required>
+          </div>
+          <div>
+            <label class="f-label" for="f-email">Email address</label>
+            <input class="f-input" type="email" id="f-email" name="email" placeholder="you@email.com">
+          </div>
+        </div>
+
+        <div class="f-row">
+          <label class="f-label">Are you coming to our wedding? *</label>
+          <div class="attend-toggle">
+            <button type="button" class="att-btn" id="btnYes" onclick="setRsvp(true)">🎉 &nbsp;Definitely!</button>
+            <button type="button" class="att-btn" id="btnNo"  onclick="setRsvp(false)">😢 &nbsp;Unfortunately no</button>
+          </div>
+          <input type="hidden" id="f-attending" name="attending" value="">
+        </div>
+
+        <div id="rsvp-decline-note">We'll miss you so much. Thank you for letting us know! 💛</div>
+
+        <div id="rsvp-attend-fields">
+
+          <div class="f-row f-row-2">
+            <div>
+              <label class="f-label" for="f-dietary">Dietary restrictions</label>
+              <select class="f-input" id="f-dietary" name="dietary">
+                <option value="None">None</option>
+                <option value="Halal">Halal</option>
+                <option value="Vegetarian/Vegan">Vegetarian / Vegan</option>
+                <option value="Nut free">Nut free</option>
+                <option value="Gluten free">Gluten free</option>
+                <option value="No beef">No beef</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="f-label" for="f-plusone">Plus one?</label>
+              <select class="f-input" id="f-plusone" name="plusOne" onchange="togglePlusOne()">
+                <option value="No">No</option>
+                <option value="Yes">Yes, +1</option>
+                <option value="+2 or more">+2 or more</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="plusone-dietary" style="display:none" class="f-row">
+            <label class="f-label" for="f-plus-diet">Plus one's dietary restrictions</label>
+            <select class="f-input" id="f-plus-diet" name="plusOneDietary">
+              <option value="None">None</option>
+              <option value="Halal">Halal</option>
+              <option value="Vegetarian/Vegan">Vegetarian / Vegan</option>
+              <option value="Nut free">Nut free</option>
+              <option value="Gluten free">Gluten free</option>
+              <option value="No beef">No beef</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="f-row">
+            <label class="f-label">Accommodation</label>
+            <label class="checkbox-row">
+              <input type="radio" name="accommodation" value="Self-arrangement" checked>
+              <span>I'll arrange my own accommodation</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="radio" name="accommodation" value="Arranged by groom/bride">
+              <span>I'd like the complimentary stay (18–20 Dec 2026)</span>
+            </label>
+            <div class="accomm-note">
+              📍 Complimentary accommodation at <a href="https://www.thehanoiclub.com/" target="_blank">Hanoi Club Hotel</a> — 2 nights for you and your family, 18–20 December 2026.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="f-row">
+          <label class="f-label" for="f-message">Any message for us? <span style="opacity:.4">(optional)</span></label>
+          <textarea class="f-input" id="f-message" name="message" placeholder="Share your wishes, excitement, or anything you'd like us to know 💌"></textarea>
+        </div>
+
+        <div class="f-error" id="f-error">Please enter your name and let us know if you're coming.</div>
+
+        <button type="submit" class="f-submit" id="f-submit">Send my RSVP 💌</button>
+      </form>
+
+      <div id="rsvp-success">
+        <div class="success-flower">🌸</div>
+        <div class="success-title" id="rsvp-success-title">See you in Hanoi!</div>
+        <div class="success-sub" id="rsvp-success-sub">Thank you so much for your RSVP. We can't wait to celebrate with you on 19 December 2026.<br><br>— Ben & Linh 🐸🐹</div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 20px;font-size:12px;color:rgba(255,255,255,.35);line-height:1.8;text-align:left">
+      <strong style="color:rgba(255,255,255,.5)">📋 Google Sheets setup:</strong> Link your Google Form to a Google Sheet (Google Forms → Responses → Link to Sheets). This RSVP submits directly to your Google Form in the script below.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vow Me Wow We</div>
+  <div class="footer-date">19 December 2026 · Sheraton Hanoi Hotel</div>
+  <div class="footer-links">
+    <a href="#couple">The Couple</a>
+    <a href="#details">Details</a>
+    <a href="#story">Our Story</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#hanoi">Hanoi Guide</a>
+    <a href="#rsvp">RSVP</a>
+  </div>
+  <div class="footer-copy">© 2026 Ben & Linh · Made with love 🐸🐹</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <img src="" id="lbImg" alt="Gallery photo">
+</div>
+
+<script>
+const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSe3tIyJOBN7YVoyF8JiZKy0sfdmuEZM7k6JhY3vBAgUKxTnKw/formResponse';
+const GOOGLE_FORM_ENTRY = {
+  fullName: 'entry.73677608',
+  email: 'entry.1150214645',
+  attending: 'entry.1994814112',
+  dietary: 'entry.440609958',
+  plusOne: 'entry.920455473',
+  plusOneDietary: 'entry.1825160099',
+  accommodation: 'entry.612067390',
+  message: 'entry.1691729250'
+};
+
+function normalizeDietaryValue(v) {
+  if (v === 'Vegetarian/Vegan') return 'Vegetarian / Vegan';
+  return v;
+}
+
+function postToGoogleForm(payload) {
+  const iframeId = 'rsvp_google_form_iframe';
+  let iframe = document.getElementById(iframeId);
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.id = iframeId;
+    iframe.name = iframeId;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = GOOGLE_FORM_ACTION;
+  form.target = iframeId;
+
+  function add(name, value) {
+    const i = document.createElement('input');
+    i.type = 'hidden';
+    i.name = name;
+    i.value = value == null ? '' : String(value);
+    form.appendChild(i);
+  }
+
+  function addChoice(entryName, value) {
+    if (!value) return;
+    if (value === 'Other') {
+      add(entryName, '__other_option__');
+      add(entryName + '.other_option_response', 'Other');
+      return;
+    }
+    add(entryName, value);
+  }
+
+  add('fvv', '1');
+  add('pageHistory', payload.plusOne && payload.plusOne !== 'No' ? '0,1' : '0');
+
+  add(GOOGLE_FORM_ENTRY.fullName, payload.fullName);
+  add(GOOGLE_FORM_ENTRY.email, payload.email);
+  addChoice(GOOGLE_FORM_ENTRY.attending, payload.attending);
+  addChoice(GOOGLE_FORM_ENTRY.dietary, normalizeDietaryValue(payload.dietary));
+  addChoice(GOOGLE_FORM_ENTRY.plusOne, payload.plusOne);
+  if (payload.plusOne && payload.plusOne !== 'No') {
+    addChoice(GOOGLE_FORM_ENTRY.plusOneDietary, normalizeDietaryValue(payload.plusOneDietary));
+  }
+  addChoice(GOOGLE_FORM_ENTRY.accommodation, payload.accommodation);
+  add(GOOGLE_FORM_ENTRY.message, payload.message);
+
+  Object.values(GOOGLE_FORM_ENTRY).forEach(e => add(e + '_sentinel', ''));
+
+  document.body.appendChild(form);
+  form.submit();
+  form.remove();
+}
+
+// ── Nav scroll ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── Hamburger ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+});
+
+const hanoiExpander = document.getElementById('hanoiExpander');
+const hanoiExpanderTag = document.getElementById('hanoiExpanderTag');
+const hanoiExpanderTitle = document.getElementById('hanoiExpanderTitle');
+const hanoiExpanderContent = document.getElementById('hanoiExpanderContent');
+const hanoiExpanderClose = document.getElementById('hanoiExpanderClose');
+
+function closeHanoiGuide() {
+  if (!hanoiExpander || hanoiExpander.hidden) return;
+  hanoiExpander.classList.remove('open');
+  document.querySelectorAll('.hanoi-card-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  setTimeout(() => { hanoiExpander.hidden = true; }, 230);
+}
+
+function openHanoiGuide(opts) {
+  if (!hanoiExpander) return;
+  hanoiExpanderTag.textContent = opts.tag || 'Guide';
+  hanoiExpanderTitle.textContent = opts.title || 'Guide';
+  if (hanoiExpanderContent && opts.templateId) {
+    const t = document.getElementById(opts.templateId);
+    if (t?.content) hanoiExpanderContent.replaceChildren(t.content.cloneNode(true));
+  }
+  if (hanoiExpander.hidden) {
+    hanoiExpander.hidden = false;
+    requestAnimationFrame(() => hanoiExpander.classList.add('open'));
+  } else {
+    hanoiExpander.classList.add('open');
+  }
+  hanoiExpander.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+document.querySelectorAll('.hanoi-card-btn[data-hanoi-url]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.hanoi-card-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    if (isOpen) return closeHanoiGuide();
+    btn.setAttribute('aria-expanded', 'true');
+    openHanoiGuide({url: btn.dataset.hanoiUrl, title: btn.dataset.hanoiTitle, tag: btn.dataset.hanoiTag, templateId: btn.dataset.hanoiTemplate});
+  });
+});
+
+hanoiExpanderClose?.addEventListener('click', closeHanoiGuide);
+
+// ── RSVP attendance toggle ──
+let rsvpAttending = null;
+function setRsvp(yes) {
+  rsvpAttending = yes;
+  document.getElementById('f-attending').value = yes ? 'Yes' : 'No';
+  document.getElementById('btnYes').className = 'att-btn' + (yes  ? ' yes-active' : '');
+  document.getElementById('btnNo').className  = 'att-btn' + (!yes ? ' no-active'  : '');
+  document.getElementById('rsvp-attend-fields').classList.toggle('show', yes);
+  document.getElementById('rsvp-decline-note').classList.toggle('show', !yes);
+}
+
+function togglePlusOne() {
+  var v = document.getElementById('f-plusone').value;
+  document.getElementById('plusone-dietary').style.display = v !== 'No' ? 'block' : 'none';
+}
+
+// ── RSVP submit ──
+document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var err = document.getElementById('f-error');
+  err.classList.remove('show');
+
+  var name = document.getElementById('f-name').value.trim();
+  if (!name || rsvpAttending === null) {
+    err.classList.add('show');
+    return;
+  }
+
+  var accommodationValue = document.querySelector('input[name="accommodation"]:checked')?.value || '';
+  if (accommodationValue === 'Self-arrangement') accommodationValue = "I’ll arrange my own accommodation";
+  if (accommodationValue === 'Arranged by groom/bride') accommodationValue = "I’d like the complimentary stay (18–20 Dec 2026)";
+
+  var data = {
+    fullName: name,
+    email: document.getElementById('f-email').value.trim(),
+    attending: rsvpAttending ? 'Definitely' : 'Unfortunately no',
+    dietary: document.getElementById('f-dietary').value,
+    plusOne: document.getElementById('f-plusone').value,
+    plusOneDietary: document.getElementById('f-plus-diet') ? document.getElementById('f-plus-diet').value : '',
+    accommodation: accommodationValue,
+    message: document.getElementById('f-message').value.trim()
+  };
+
+  var btn = document.getElementById('f-submit');
+  btn.disabled = true; btn.textContent = 'Sending…';
+
+  try {
+    postToGoogleForm(data);
+    await new Promise(r => setTimeout(r, 650));
+    document.getElementById('rsvpForm').style.display = 'none';
+    var succ = document.getElementById('rsvp-success');
+    succ.classList.add('show');
+    if (!rsvpAttending) {
+      document.getElementById('rsvp-success-title').textContent = "We'll miss you 💛";
+      document.getElementById('rsvp-success-sub').textContent = "Thank you for letting us know. We truly appreciate your response!\n\n— Ben & Linh 🐸🐹";
+    }
+  } catch(ex) {
+    btn.disabled = false; btn.textContent = 'Send my RSVP 💌';
+    err.textContent = 'Something went wrong. Please try again.';
+    err.classList.add('show');
+  }
+});
+
+// ── Gallery lightbox ──
+document.querySelectorAll('.gallery-item img').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', () => {
+    document.getElementById('lbImg').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  closeHanoiGuide();
+  closeLightbox();
+});
+</script>
+
+</body>
+</html>
